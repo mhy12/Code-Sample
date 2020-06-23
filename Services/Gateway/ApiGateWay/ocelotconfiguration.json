@@ -1,0 +1,93 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:7000"
+  },
+
+  /**********************************************************************************************************************************************************/
+  /*********************************************************************************************************************************************************/
+
+  "ReRoutes": [
+    {
+      // SUPPLIER SERVICE CONFIGURATION:
+
+      "DownstreamPathTemplate": "/api/suppliers/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4000
+        }
+      ],
+      "UpstreamPathTemplate": "/suppliers/{id}",
+      "UpstreamHttpMethod": [ "PATCH", "GET", "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "SupplierKey",
+        "AllowedScopes": [ "api2" ]
+      }
+    },
+
+    /***************************************************************************************/
+    /***************************************************************************************/
+
+    {
+      "DownstreamPathTemplate": "/api/suppliers",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4000
+        }
+      ],
+      "UpstreamPathTemplate": "/suppliers",
+      "UpstreamHttpMethod": [ "POST" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "SupplierKey",
+        "AllowedScopes": [ "api2" ]
+      }
+    },
+
+    /**********************************************************************************************************************************************************/
+    /*********************************************************************************************************************************************************/
+
+    // CAR SERVICE CONFIGURATIONS:
+
+    {
+      "DownstreamPathTemplate": "/api/cars/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7001
+        }
+      ],
+
+      "UpstreamPathTemplate": "/cars/{id}",
+      "UpstreamHttpMethod": [ "PATCH", "GET", "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "CarKey",
+        "AllowedScopes": [ "openid", "profile", "api1" ]
+      }
+    },
+
+    /***************************************************************************************/
+    /***************************************************************************************/
+
+    {
+      "DownstreamPathTemplate": "/api/cars",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7001
+        }
+      ],
+
+      "UpstreamPathTemplate": "/cars",
+      "UpstreamHttpMethod": [ "POST", "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "CarKey",
+        "AllowedScopes": [ "openid", "profile", "api1" ]
+      }
+    }
+  ]
+}

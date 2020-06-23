@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit.RabbitMQ" Version="6.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\MicroService.Messaging\MicroService.Messaging.csproj" />
+    <ProjectReference Include="..\MicroService.Cars.Data\MicroService.Cars.Data.csproj" />
+  </ItemGroup>
+
+</Project>
